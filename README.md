@@ -8,3 +8,7 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 
 
 npm install --save @fullcalendar/core @fullcalendar/vue3 @fullcalendar/daygrid @fullcalendar/timegrid @fullcalendar/list @fullcalendar/interaction
+
+## À voir :
+
+https://fullcalendar.io/
