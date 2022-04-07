@@ -4,7 +4,7 @@ import "@fullcalendar/core/vdom"; // solves problem with Vite
 import FullCalendar from "@fullcalendar/vue3";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
-import listPlugin from "@fullcalendar/list";
+// import listPlugin from "@fullcalendar/list";
 import interactionPlugin from "@fullcalendar/interaction";
 //import useEvents from '../composables/useEvents.js'
 
@@ -13,17 +13,18 @@ import interactionPlugin from "@fullcalendar/interaction";
 //const ( getEvents ) = useEvents[]
 
 const options = reactive({
-  plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
+  plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
   initialView: "dayGridMonth",
   headerToolbar: {
     left: "prev,next, today",
     center: "titre",
-    right: "dayGridMonth, dayGridWeek, listDay",
+    right: "dayGridMonth",
   },
   editable: true,
   selectable: true,
   weekends: true,
-  select: (arg) => { //argument est passé à la directive
+  select: (arg) => {
+    //argument est passé à la directive
     id.value = id.value + 1;
 
     const cal = arg.view.calendar;
