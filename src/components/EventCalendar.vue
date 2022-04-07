@@ -1,13 +1,16 @@
 <script setup>
-import { reactive } from "vue"; // les changements d'état de l'application sont automatiquement reflétés dans le DOM
+import { reactive } from "vue"; // => est la capacité pour une variable (array, string, number, object, etc) de se mettre à jour lorsque sa valeur ou toute autre variable à laquelle elle fait référence est modifiée après la déclaration
 import "@fullcalendar/core/vdom"; // solves problem with Vite
 import FullCalendar from "@fullcalendar/vue3";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import listPlugin from "@fullcalendar/list";
 import interactionPlugin from "@fullcalendar/interaction";
+//import useEvents from '../composables/useEvents.js'
 
 //const id = ref(10);
+
+//const ( getEvents ) = useEvents[]
 
 const options = reactive({
   plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
@@ -20,7 +23,7 @@ const options = reactive({
   editable: true,
   selectable: true,
   weekends: true,
-  select: (arg) => {
+  select: (arg) => { //argument est passé à la directive
     id.value = id.value + 1;
 
     const cal = arg.view.calendar;
@@ -62,12 +65,12 @@ const options = reactive({
   },
 });
 
-options.events = getEvents.value;
-watch(getEvents, () => {
-  options.events = getEvents.value;
-});
+// options.events = getEvents.value;
+// watch(getEvents, () => {
+//   options.events = getEvents.value;
+// });
 </script>
 
 <template>
-  <FullCalendar options="options" />
+  <FullCalendar v-bind:options="options" />
 </template>
