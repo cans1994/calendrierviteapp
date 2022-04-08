@@ -17,7 +17,7 @@ const options = reactive({
   initialView: "dayGridMonth",
   headerToolbar: {
     left: "prev,next, today",
-    center: "titre",
+    center: "title",
     right: "dayGridMonth",
   },
   editable: true,
@@ -26,6 +26,17 @@ const options = reactive({
   select: (arg) => {
     //argument est passé à la directive
     id.value = id.value + 1;
+
+    let str = formatDate("2018-09-01", {
+      month: "long",
+      year: "numeric",
+      day: "numeric",
+      timeZoneName: "short",
+      timeZone: "UTC",
+      locale: "fr",
+    });
+
+    console.log(str);
 
     const cal = arg.view.calendar;
     cal.unselect();
